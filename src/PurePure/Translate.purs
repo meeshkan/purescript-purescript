@@ -1,4 +1,4 @@
-module Translate where
+module PurePure.Translate where
 
 import Prelude
 import CoreFn.FromJSON (moduleFromJSON)
@@ -10,23 +10,13 @@ import Foreign (F)
 import Prim.Boolean (kind Boolean)
 import Type.Data.Peano (kind Int)
 
--- To translate the module to a string...
--- Output the moduleName, moduleExports and moduleImports as strings
--- Everything gets prefixed with `Pure'` to bring it to the typelevel
---
 -- The real work hasn't been done yet for this project, and it is recursing through
--- moduleDecls.  The type of that is `Bind Ann` and it is defined as such.
---
--- data Bind a
---  = NonRec a Ident (Expr a)
---  | Rec (Array (Tuple (Tuple a Ident) (Expr a)))
---
--- In both cases, it's a matter of traversing the `Expr Ann` downwards and making
--- the necessary substitutions.
+-- expression tree and making the appropriate substitutions.
 --
 -- For example:
 -- - `ObjectUpdate` is achieved with `Union`.
--- - `App` (of the form `myFunc myVal`) is achieved with `Pure'myFunc myVal myRes`, where Pure'myFunc is a typeclass
+-- - `App` (of the form `myFunc myVal`) is achieved with
+--       `ExprApp myFunc myVal myRes` (see `instanceExprApp` below)
 -- - `Case` is split out into a bunch of if/then clauses.
 -- - etc.
 --
@@ -34,44 +24,41 @@ import Type.Data.Peano (kind Int)
 -- outputting to the String that represents the new module. For example,
 -- while in PureScript `App a b` is valid corefn, in typelevel programming,
 -- we would need both the representation as a TypeExpr and the corresponding
--- typeclass.  For example:
+-- typeclass.
 --
--- instanceExprApp :: (EvalExpr a a', EvalExpr b b', ExprApp a' b' c) => EvalExpr (App (a b)) c
---
--- in the equivalent of an Ident for future consumption. So essentially,
--- all structures are flattened, with the inner-most computations happening at the top.
+-- instanceExprApp :: (EvalExpr a a', EvalExpr b b', ExprApp a' b' c) => EvalExpr (App' (a b)) c
 --
 -- Corefn does not output types, but that doesn't matter here.
--- Esentially, there are only two kinds: Expr' and Pure'.
--- Expr' constructs and expression tree in the same way as corefn.
--- In some cases, an expression will contain `Pure'`.
--- `Pure'` is a wrapper arond all the primitives (Number, Boolean, etc)
+-- Esentially, there are only two kinds: Expr' and Literal'.
+-- Expr' mimics the arboreal representation in corefn.
+-- In some cases, an expression will contain `Literal'`.
+-- `Literal'` is a wrapper arond all the primitives (Number, Boolean, etc)
 -- and it is only when it is fed to low-level typeclasses.  For example,
 -- we will define addition over the integers as roughtly as:
 --
--- class AddInt (l :: Pure') (r :: Pure') (o :: Pure') | l r -> o
+-- class AddInt (l :: Literal') (r :: Literal') (o :: Literal') | l r -> o
 -- instance addInt :: (
 --   ...typelevel addition goes here, producing o...
--- ) => AddInt (Pure'Int l) (Pure'Int r) o
+-- ) => AddInt (Literal'Int l) (Literal'Int r) o
 --
--- Because the kind Pure' is used all the way until ffi specialization, we don't need to worry
--- about any kind other than Pure' for computations in `corefn`.
+-- Because the kind Literal' is used all the way until ffi specialization, we don't need to worry
+-- about any kind other than Literal' for computations in `corefn`.
 --
-foreign import kind Pure'
+foreign import kind Literal'
 
 -- https://pursuit.purescript.org/builtins/docs/Prim#t:Char
 -- we will guarantee by construction that the symbol only contains
 -- one string. this is like the JavaScript implementation
-foreign import data Pure'Char :: Symbol -> Pure'
+foreign import data CharLiteral' :: Symbol -> Literal'
 
 -- https://pursuit.purescript.org/builtins/docs/Prim#t:String
-foreign import data Pure'String :: Symbol -> Pure'
+foreign import data StringLiteral' :: Symbol -> Literal'
 
 -- https://pursuit.purescript.org/builtins/docs/Prim#t:Int
-foreign import data Pure'Int :: Int -> Pure'
+foreign import data IntLiteral' :: Int -> Literal'
 
 -- https://pursuit.purescript.org/builtins/docs/Prim#t:Boolean
-foreign import data Pure'Boolean :: Boolean -> Pure'
+foreign import data BooleanLiteral' :: Boolean -> Literal'
 
 foreign import kind Expr'
 
