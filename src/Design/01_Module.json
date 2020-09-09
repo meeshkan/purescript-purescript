@@ -1,0 +1,55 @@
+{
+  "moduleName": ["PSPS", "Design", "Module"],
+  "imports": [
+    {
+      "moduleName": ["Prim"]
+    }
+  ],
+  "builtWith": "0.13.8",
+  "modulePath": "src/Design/01_Module.purs",
+  "exports": ["Hello", "World"],
+  "decls": [
+    {
+      "identifier": "Hello",
+      "expression": {
+        "constructorName": "Hello",
+        "typeName": "Hello",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "World",
+      "expression": {
+        "constructorName": "World",
+        "typeName": "Hello",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "See",
+      "expression": {
+        "constructorName": "See",
+        "typeName": "Goodbye",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "You",
+      "expression": {
+        "constructorName": "You",
+        "typeName": "Goodbye",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    }
+  ],
+  "comments": [],
+  "foreign": []
+}
