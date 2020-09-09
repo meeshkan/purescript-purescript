@@ -1,0 +1,67 @@
+{
+  "moduleName": ["PSPS", "Design", "Function"],
+  "imports": [
+    {
+      "moduleName": ["PSPS", "Design", "Function"]
+    },
+    {
+      "moduleName": ["Prim"]
+    }
+  ],
+  "builtWith": "0.13.8",
+  "modulePath": "src/Design/02_Function.purs",
+  "exports": ["Pass", "Word", "NotSecure", "pw"],
+  "decls": [
+    {
+      "identifier": "Word",
+      "expression": {
+        "constructorName": "Word",
+        "typeName": "Word",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "Pass",
+      "expression": {
+        "constructorName": "Pass",
+        "typeName": "Pass",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "NotSecure",
+      "expression": {
+        "constructorName": "NotSecure",
+        "typeName": "NotSecure",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "pw",
+      "expression": {
+        "body": {
+          "body": {
+            "value": {
+              "moduleName": ["PSPS", "Design", "Function"],
+              "identifier": "NotSecure"
+            },
+            "type": "Var"
+          },
+          "argument": "v1",
+          "type": "Abs"
+        },
+        "argument": "v",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    }
+  ],
+  "comments": [],
+  "foreign": []
+}
