@@ -39,7 +39,7 @@ import Type.Data.Peano (kind Int)
 -- class AddInt (l :: Literal') (r :: Literal') (o :: Literal') | l r -> o
 -- instance addInt :: (
 --   ...typelevel addition goes here, producing o...
--- ) => AddInt (Literal'Int l) (Literal'Int r) o
+-- ) => AddInt (IntLiteral' l) (IntLiteral' r) o
 --
 -- Because the kind Literal' is used all the way until ffi specialization, we don't need to worry
 -- about any kind other than Literal' for computations in `corefn`.
