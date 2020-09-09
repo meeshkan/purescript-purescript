@@ -52,7 +52,7 @@ import Type.Data.Peano (kind Int)
 -- class AddInt (l :: Pure') (r :: Pure') (o :: Pure') | l r -> o
 -- instance addInt :: (
 --   ...typelevel addition goes here, producing o...
--- ) => AddInt (Pure' (Integer l)) (Pure' (Integer l)) o
+-- ) => AddInt (Pure'Int l) (Pure'Int r) o
 --
 -- Because the kind Pure' is used all the way until ffi specialization, we don't need to worry
 -- about any kind other than Pure' for computations in `corefn`.
