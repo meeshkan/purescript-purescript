@@ -73,6 +73,14 @@ foreign import data Pure'Int :: Int -> Pure'
 -- https://pursuit.purescript.org/builtins/docs/Prim#t:Boolean
 foreign import data Pure'Boolean :: Boolean -> Pure'
 
+foreign import kind Expr'
+
+foreign import data Literal' :: Expr' -> Expr'
+
+foreign import data Accessor' :: Symbol -> Expr' -> Expr'
+
+foreign import data App' :: Expr' -> Expr' -> Expr'
+
 -- initial sketch of renaming toplevel imports and exports
 pure'Ident :: Ident -> Ident
 pure'Ident UnusedIdent = UnusedIdent
