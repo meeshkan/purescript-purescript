@@ -62,7 +62,7 @@ foreign import data BooleanLiteral' :: Boolean -> Literal'
 
 foreign import kind Expr'
 
-foreign import data Literal' :: Expr' -> Expr'
+foreign import data Literal' :: Literal' -> Expr'
 
 foreign import data Accessor' :: Symbol -> Expr' -> Expr'
 
