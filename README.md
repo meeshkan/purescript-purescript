@@ -1,4 +1,4 @@
-# purepure
+# purescript-purescript
 
 A PureScript-to-PureScript-types compiler.
 
