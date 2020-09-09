@@ -41,9 +41,6 @@ import Type.Data.Peano (kind Int)
 --   ...typelevel addition goes here, producing o...
 -- ) => AddInt (IntLiteral' l) (IntLiteral' r) o
 --
--- Because the kind Literal' is used all the way until ffi specialization, we don't need to worry
--- about any kind other than Literal' for computations in `corefn`.
---
 foreign import kind Literal'
 
 -- https://pursuit.purescript.org/builtins/docs/Prim#t:Char
