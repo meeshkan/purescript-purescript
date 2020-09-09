@@ -1,4 +1,4 @@
-module PSPS.PSPS.Design.Module where
+module PSPS.Design.Module.Trans where
 
 import PSPS (class Bind, Constructor, kind Expr, kind ModuleName)
 import Type.Data.Peano (Z, kind Nat)
