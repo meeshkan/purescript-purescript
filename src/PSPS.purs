@@ -19,7 +19,7 @@ foreign import data Constructor :: Symbol -> Symbol -> Nat -> Expr
 -- because there is no further reducing to do here.
 -- on the other hand, 1+1 (addition of two typelevel integers) should result in 2
 -- we'll have to figure out what data have `kind Result`
-class Eval (expr :: Expr) (result :: Result) | expr -> result
+class Eval (expr :: Expr) (result :: Expr) | expr -> result
 
 -- binds and modulename (ie Foo.Bar) and a name (ie Baz) to an expression
 -- this is then used by `Var` during the lookup phase
