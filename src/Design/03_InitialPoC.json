@@ -1,0 +1,533 @@
+{
+  "moduleName": ["PSPS", "Design", "InitialPoC"],
+  "imports": [
+    {
+      "moduleName": ["PSPS", "Design", "InitialPoC"]
+    },
+    {
+      "moduleName": ["Prim"]
+    }
+  ],
+  "builtWith": "0.13.8",
+  "modulePath": "src/Design/03_InitialPoC.purs",
+  "exports": ["Semiring", "add", "zero", "mul", "one", "semiringInt"],
+  "decls": [
+    {
+      "identifier": "Tuple",
+      "expression": {
+        "constructorName": "Tuple",
+        "typeName": "Tuple",
+        "fieldNames": ["value0", "value1"],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "Just",
+      "expression": {
+        "constructorName": "Just",
+        "typeName": "Maybe",
+        "fieldNames": ["value0"],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "Nothing",
+      "expression": {
+        "constructorName": "Nothing",
+        "typeName": "Maybe",
+        "fieldNames": [],
+        "type": "Constructor"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "Semiring",
+      "expression": {
+        "body": {
+          "body": {
+            "body": {
+              "body": {
+                "value": {
+                  "literalType": "ObjectLiteral",
+                  "value": [
+                    [
+                      "add",
+                      {
+                        "value": {
+                          "moduleName": null,
+                          "identifier": "add"
+                        },
+                        "type": "Var"
+                      }
+                    ],
+                    [
+                      "mul",
+                      {
+                        "value": {
+                          "moduleName": null,
+                          "identifier": "mul"
+                        },
+                        "type": "Var"
+                      }
+                    ],
+                    [
+                      "one",
+                      {
+                        "value": {
+                          "moduleName": null,
+                          "identifier": "one"
+                        },
+                        "type": "Var"
+                      }
+                    ],
+                    [
+                      "zero",
+                      {
+                        "value": {
+                          "moduleName": null,
+                          "identifier": "zero"
+                        },
+                        "type": "Var"
+                      }
+                    ]
+                  ]
+                },
+                "type": "Literal"
+              },
+              "argument": "zero",
+              "type": "Abs"
+            },
+            "argument": "one",
+            "type": "Abs"
+          },
+          "argument": "mul",
+          "type": "Abs"
+        },
+        "argument": "add",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "zero",
+      "expression": {
+        "body": {
+          "expression": {
+            "value": {
+              "moduleName": null,
+              "identifier": "dict"
+            },
+            "type": "Var"
+          },
+          "fieldName": "zero",
+          "type": "Accessor"
+        },
+        "argument": "dict",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "semiringInt",
+      "expression": {
+        "argument": {
+          "value": {
+            "literalType": "IntLiteral",
+            "value": 0
+          },
+          "type": "Literal"
+        },
+        "type": "App",
+        "abstraction": {
+          "argument": {
+            "value": {
+              "literalType": "IntLiteral",
+              "value": 1
+            },
+            "type": "Literal"
+          },
+          "type": "App",
+          "abstraction": {
+            "argument": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "intMul"
+              },
+              "type": "Var"
+            },
+            "type": "App",
+            "abstraction": {
+              "argument": {
+                "value": {
+                  "moduleName": ["PSPS", "Design", "InitialPoC"],
+                  "identifier": "intAdd"
+                },
+                "type": "Var"
+              },
+              "type": "App",
+              "abstraction": {
+                "value": {
+                  "moduleName": ["PSPS", "Design", "InitialPoC"],
+                  "identifier": "Semiring"
+                },
+                "type": "Var"
+              }
+            }
+          }
+        }
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "one",
+      "expression": {
+        "body": {
+          "expression": {
+            "value": {
+              "moduleName": null,
+              "identifier": "dict"
+            },
+            "type": "Var"
+          },
+          "fieldName": "one",
+          "type": "Accessor"
+        },
+        "argument": "dict",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "mul",
+      "expression": {
+        "body": {
+          "expression": {
+            "value": {
+              "moduleName": null,
+              "identifier": "dict"
+            },
+            "type": "Var"
+          },
+          "fieldName": "mul",
+          "type": "Accessor"
+        },
+        "argument": "dict",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "add",
+      "expression": {
+        "body": {
+          "expression": {
+            "value": {
+              "moduleName": null,
+              "identifier": "dict"
+            },
+            "type": "Var"
+          },
+          "fieldName": "add",
+          "type": "Accessor"
+        },
+        "argument": "dict",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "addMaybe",
+      "expression": {
+        "body": {
+          "body": {
+            "caseExpressions": [
+              {
+                "value": {
+                  "moduleName": null,
+                  "identifier": "v"
+                },
+                "type": "Var"
+              },
+              {
+                "value": {
+                  "moduleName": null,
+                  "identifier": "v1"
+                },
+                "type": "Var"
+              }
+            ],
+            "caseAlternatives": [
+              {
+                "binders": [
+                  {
+                    "constructorName": {
+                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "identifier": "Just"
+                    },
+                    "typeName": {
+                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "identifier": "Maybe"
+                    },
+                    "binders": [
+                      {
+                        "identifier": "x",
+                        "binderType": "VarBinder"
+                      }
+                    ],
+                    "binderType": "ConstructorBinder"
+                  },
+                  {
+                    "constructorName": {
+                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "identifier": "Just"
+                    },
+                    "typeName": {
+                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "identifier": "Maybe"
+                    },
+                    "binders": [
+                      {
+                        "identifier": "y",
+                        "binderType": "VarBinder"
+                      }
+                    ],
+                    "binderType": "ConstructorBinder"
+                  }
+                ],
+                "expression": {
+                  "argument": {
+                    "argument": {
+                      "value": {
+                        "moduleName": null,
+                        "identifier": "y"
+                      },
+                      "type": "Var"
+                    },
+                    "type": "App",
+                    "abstraction": {
+                      "argument": {
+                        "value": {
+                          "moduleName": null,
+                          "identifier": "x"
+                        },
+                        "type": "Var"
+                      },
+                      "type": "App",
+                      "abstraction": {
+                        "argument": {
+                          "value": {
+                            "moduleName": ["PSPS", "Design", "InitialPoC"],
+                            "identifier": "semiringInt"
+                          },
+                          "type": "Var"
+                        },
+                        "type": "App",
+                        "abstraction": {
+                          "value": {
+                            "moduleName": ["PSPS", "Design", "InitialPoC"],
+                            "identifier": "add"
+                          },
+                          "type": "Var"
+                        }
+                      }
+                    }
+                  },
+                  "type": "App",
+                  "abstraction": {
+                    "value": {
+                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "identifier": "Just"
+                    },
+                    "type": "Var"
+                  }
+                },
+                "isGuarded": false
+              },
+              {
+                "binders": [
+                  {
+                    "binderType": "NullBinder"
+                  },
+                  {
+                    "binderType": "NullBinder"
+                  }
+                ],
+                "expression": {
+                  "value": {
+                    "moduleName": ["PSPS", "Design", "InitialPoC"],
+                    "identifier": "Nothing"
+                  },
+                  "type": "Var"
+                },
+                "isGuarded": false
+              }
+            ],
+            "type": "Case"
+          },
+          "argument": "v1",
+          "type": "Abs"
+        },
+        "argument": "v",
+        "type": "Abs"
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "maybeOnePlusOneJ",
+      "expression": {
+        "argument": {
+          "argument": {
+            "value": {
+              "literalType": "IntLiteral",
+              "value": 1
+            },
+            "type": "Literal"
+          },
+          "type": "App",
+          "abstraction": {
+            "value": {
+              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "identifier": "Just"
+            },
+            "type": "Var"
+          }
+        },
+        "type": "App",
+        "abstraction": {
+          "argument": {
+            "argument": {
+              "value": {
+                "literalType": "IntLiteral",
+                "value": 1
+              },
+              "type": "Literal"
+            },
+            "type": "App",
+            "abstraction": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "Just"
+              },
+              "type": "Var"
+            }
+          },
+          "type": "App",
+          "abstraction": {
+            "value": {
+              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "identifier": "addMaybe"
+            },
+            "type": "Var"
+          }
+        }
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "maybeOnePlusOneN",
+      "expression": {
+        "argument": {
+          "value": {
+            "moduleName": ["PSPS", "Design", "InitialPoC"],
+            "identifier": "Nothing"
+          },
+          "type": "Var"
+        },
+        "type": "App",
+        "abstraction": {
+          "argument": {
+            "argument": {
+              "value": {
+                "literalType": "IntLiteral",
+                "value": 1
+              },
+              "type": "Literal"
+            },
+            "type": "App",
+            "abstraction": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "Just"
+              },
+              "type": "Var"
+            }
+          },
+          "type": "App",
+          "abstraction": {
+            "value": {
+              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "identifier": "addMaybe"
+            },
+            "type": "Var"
+          }
+        }
+      },
+      "bindType": "NonRec"
+    },
+    {
+      "identifier": "onePlusOne",
+      "expression": {
+        "argument": {
+          "argument": {
+            "value": {
+              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "identifier": "semiringInt"
+            },
+            "type": "Var"
+          },
+          "type": "App",
+          "abstraction": {
+            "value": {
+              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "identifier": "one"
+            },
+            "type": "Var"
+          }
+        },
+        "type": "App",
+        "abstraction": {
+          "argument": {
+            "argument": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "semiringInt"
+              },
+              "type": "Var"
+            },
+            "type": "App",
+            "abstraction": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "one"
+              },
+              "type": "Var"
+            }
+          },
+          "type": "App",
+          "abstraction": {
+            "argument": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "semiringInt"
+              },
+              "type": "Var"
+            },
+            "type": "App",
+            "abstraction": {
+              "value": {
+                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "identifier": "add"
+              },
+              "type": "Var"
+            }
+          }
+        }
+      },
+      "bindType": "NonRec"
+    }
+  ],
+  "comments": [],
+  "foreign": ["intAdd", "intMul"]
+}
