@@ -1,6 +1,6 @@
 module PSPS.Design.InitialPoC.Trans where
 
-import PSPS (class Bind, class Eval, Abs, kind Expr, kind ModuleName)
+import PSPS (class Bind, class Eval, App, kind Expr, kind ModuleName)
 
 foreign import data PSPS_Design_InitialPoC_Trans :: ModuleName
 
@@ -36,9 +36,9 @@ instance iPSPS_Design_InitialPoC_Trans_Eval'Nothing'Maybe0 ::
 instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Maybe1 ::
   PSPS_Design_InitialPoC_Trans_Eval (Maybe1 Just) (Maybe1 Just)
 
-instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Maybe1'Abs ::
+instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Maybe1'App ::
   PSPS_Design_InitialPoC_Trans_Eval a a' =>
-  PSPS_Design_InitialPoC_Trans_Eval (Abs (Maybe1 Just) a) (Maybe0 (Just a'))
+  PSPS_Design_InitialPoC_Trans_Eval (App (Maybe1 Just) a) (Maybe0 (Just a'))
 
 instance iEval'Just'Maybe0 ::
   PSPS_Design_InitialPoC_Trans_Eval (Maybe0 (Just v0)) o =>
@@ -85,13 +85,13 @@ instance iEval'Tuple'Tuple2 ::
   PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) o =>
   Eval (Tuple2 Tuple) o
 
-instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Tuple2'Abs ::
+instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Tuple2'App ::
   PSPS_Design_InitialPoC_Trans_Eval a a' =>
-  PSPS_Design_InitialPoC_Trans_Eval (Abs (Tuple2 Tuple) a) (Tuple1 (Tuple a'))
+  PSPS_Design_InitialPoC_Trans_Eval (App (Tuple2 Tuple) a) (Tuple1 (Tuple a'))
 
-instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Tuple1'Abs ::
+instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Tuple1'App ::
   (PSPS_Design_InitialPoC_Trans_Eval a a', PSPS_Design_InitialPoC_Trans_Eval b b') =>
-  PSPS_Design_InitialPoC_Trans_Eval (Abs (Tuple1 (Tuple a)) b) (Tuple0 (Tuple a' b'))
+  PSPS_Design_InitialPoC_Trans_Eval (App (Tuple1 (Tuple a)) b) (Tuple0 (Tuple a' b'))
 
 instance iPSPS_Design_InitialPoC_Trans_Bind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" (Tuple2 Tuple)
 

@@ -9,7 +9,7 @@ foreign import kind ModuleName
 foreign import data Constructor :: Symbol -> Symbol -> Nat -> Expr
 
 ------------------------- a -> b   a       
-foreign import data Abs :: Expr -> Expr -> Expr
+foreign import data App :: Expr -> Expr -> Expr
 
 -- evaluates an expression to a result
 -- sometimes, in the case of data, the result will mirror the expression
