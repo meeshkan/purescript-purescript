@@ -24,6 +24,18 @@ instance iPSPS_Design_InitialPoC_Trans_Eval'Nothing'Maybe0 ::
 instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Maybe1 ::
   PSPS_Design_InitialPoC_Trans_Eval (Maybe1 Just) (Maybe1 Just)
 
+instance iEval'Just'Maybe0 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Maybe0 (Just v0)) o =>
+  Eval (Maybe0 (Just v0)) o
+
+instance iEval'Nothing'Maybe0 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Maybe0 Nothing) o =>
+  Eval (Maybe0 Nothing) o
+
+instance iEval'Just'Maybe1 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Maybe1 Just) o =>
+  Eval (Maybe1 Just) o
+
 foreign import kind Tuple
 
 foreign import data Tuple :: Expr -> Expr -> Tuple
@@ -44,3 +56,15 @@ instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple1 ::
 
 instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple2 ::
   PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) (Tuple2 Tuple)
+
+instance iEval'Tuple'Tuple0 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple0 (Tuple v0 v1)) o =>
+  Eval (Tuple0 (Tuple v0 v1)) o
+
+instance iEval'Tuple'Tuple1 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple1 (Tuple v0)) o =>
+  Eval (Tuple1 (Tuple v0)) o
+
+instance iEval'Tuple'Tuple2 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) o =>
+  Eval (Tuple2 Tuple) o
