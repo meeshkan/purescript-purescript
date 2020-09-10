@@ -1,43 +1,23 @@
 module PSPS.Design.Module.Trans where
 
-import PSPS (kind Expr, kind Result)
+import PSPS (kind Expr)
 
-foreign import kind MaybeE
+foreign import kind Maybe
 
-foreign import kind MaybeR
+foreign import data Just :: Expr -> Maybe
 
-foreign import data JustE :: Expr -> MaybeE
+foreign import data Nothing :: Maybe
 
-foreign import data NothingE :: MaybeE
+foreign import data Maybe0 :: Maybe -> Expr
 
-foreign import data JustR :: Result -> MaybeR
+foreign import data Maybe1 :: (Expr -> Maybe) -> Expr
 
-foreign import data NothingR :: MaybeR
+foreign import kind Tuple
 
-foreign import data MaybeE0 :: MaybeE -> Expr
+foreign import data Tuple :: Expr -> Expr -> Tuple
 
-foreign import data MaybeE1 :: (Expr -> MaybeE) -> Expr
+foreign import data Tuple0 :: Tuple -> Expr
 
-foreign import data MaybeR0 :: MaybeR -> Result
+foreign import data Tuple1 :: (Expr -> Tuple) -> Expr
 
-foreign import data MaybeR1 :: (Result -> MaybeR) -> Result
-
-foreign import kind TupleE
-
-foreign import kind TupleR
-
-foreign import data TupleE :: Expr -> Expr -> TupleE
-
-foreign import data TupleR :: Result -> Result -> TupleR
-
-foreign import data TupleE0 :: TupleE -> Expr
-
-foreign import data TupleE1 :: (Expr -> TupleE) -> Expr
-
-foreign import data TupleE2 :: (Expr -> Expr -> TupleE) -> Expr
-
-foreign import data TupleR0 :: TupleR -> Result
-
-foreign import data TupleR1 :: (Result -> TupleR) -> Result
-
-foreign import data TupleR2 :: (Result -> Result -> TupleR) -> Result
+foreign import data Tuple2 :: (Expr -> Expr -> Tuple) -> Expr
