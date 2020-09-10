@@ -1,7 +1,7 @@
 module PSPS.Design.InitialPoC.Trans where
 
 import PSPS (class Bind, class Eval, Abs, Literal, Prim'Int, App, Foreign, kind Expr, kind FFIName, kind ModuleName)
-import Type.Data.Peano (class SumInt, Succ, Z)
+import Type.Data.Peano (class ProductInt, class SumInt, Succ, Z)
 
 foreign import data PSPS_Design_InitialPoC_Trans :: ModuleName
 
@@ -29,6 +29,27 @@ instance iPSPS_Design_InitialPoC_Trans_Eval'intAdd'intAddE'App ::
   , SumInt a' b' c
   ) =>
   PSPS_Design_InitialPoC_Trans_Eval (App (App (Foreign Foreign'intAdd) a) b) (Literal (Prim'Int c))
+
+foreign import data Foreign'intMul :: FFIName
+
+instance iPSPS_Design_InitialPoC_Trans_Bind'intMul :: PSPS_Design_InitialPoC_Trans_Bind "intMul" (Abs "intMul" (Succ Z) (Abs "intMul" Z (Foreign Foreign'intMul)))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'intMul'intMul1'App ::
+  PSPS_Design_InitialPoC_Trans_Eval a a' =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (Abs "intMul" (Succ Z) (Abs "intMul" Z (Foreign Foreign'intMul))) a) (Abs "intMul" Z (App (Foreign Foreign'intMul) a'))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'intMul'intMul0'App ::
+  ( PSPS_Design_InitialPoC_Trans_Eval a a'
+  , PSPS_Design_InitialPoC_Trans_Eval b b'
+  ) =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (Abs "intMul" Z (App (Foreign Foreign'intMul) a)) b) (App (App (Foreign Foreign'intMul) a') b')
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'intMul'intMulE'App ::
+  ( PSPS_Design_InitialPoC_Trans_Eval a (Literal (Prim'Int a'))
+  , PSPS_Design_InitialPoC_Trans_Eval b (Literal (Prim'Int b'))
+  , ProductInt a' b' c
+  ) =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (App (Foreign Foreign'intMul) a) b) (Literal (Prim'Int c))
 
 foreign import kind Tuple
 
