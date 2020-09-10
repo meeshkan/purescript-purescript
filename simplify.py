@@ -1,6 +1,7 @@
 import json
 import sys
-f = sys.argv[1]
+
+file_paths = sys.argv[1:]
 
 def simplify(j):
   if type(j) == type({}):
@@ -15,5 +16,12 @@ def simplify(j):
     return j
 
 if __name__ == '__main__':
-  with open(f, 'r') as j:
-    print(json.dumps(simplify(json.loads(j.read())), indent=2))
+  for file_path in file_paths:
+    file = open(file_path, 'r')
+    file_contents = file.read()
+    file.close()
+
+    file = open(file_path, 'w')
+    file.write(json.dumps(simplify(json.loads(file_contents)), indent=2))
+
+    file.close()
