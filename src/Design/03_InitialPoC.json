@@ -1,23 +1,43 @@
 {
-  "moduleName": ["PSPS", "Design", "InitialPoC"],
+  "moduleName": [
+    "PSPS",
+    "Design",
+    "InitialPoC"
+  ],
   "imports": [
     {
-      "moduleName": ["PSPS", "Design", "InitialPoC"]
+      "moduleName": [
+        "PSPS",
+        "Design",
+        "InitialPoC"
+      ]
     },
     {
-      "moduleName": ["Prim"]
+      "moduleName": [
+        "Prim"
+      ]
     }
   ],
   "builtWith": "0.13.8",
   "modulePath": "src/Design/03_InitialPoC.purs",
-  "exports": ["Semiring", "add", "zero", "mul", "one", "semiringInt"],
+  "exports": [
+    "Semiring",
+    "add",
+    "zero",
+    "mul",
+    "one",
+    "semiringInt"
+  ],
   "decls": [
     {
       "identifier": "Tuple",
       "expression": {
         "constructorName": "Tuple",
         "typeName": "Tuple",
-        "fieldNames": ["value0", "value1"],
+        "fieldNames": [
+          "value0",
+          "value1"
+        ],
         "type": "Constructor"
       },
       "bindType": "NonRec"
@@ -27,7 +47,9 @@
       "expression": {
         "constructorName": "Just",
         "typeName": "Maybe",
-        "fieldNames": ["value0"],
+        "fieldNames": [
+          "value0"
+        ],
         "type": "Constructor"
       },
       "bindType": "NonRec"
@@ -152,7 +174,11 @@
           "abstraction": {
             "argument": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "intMul"
               },
               "type": "Var"
@@ -161,7 +187,11 @@
             "abstraction": {
               "argument": {
                 "value": {
-                  "moduleName": ["PSPS", "Design", "InitialPoC"],
+                  "moduleName": [
+                    "PSPS",
+                    "Design",
+                    "InitialPoC"
+                  ],
                   "identifier": "intAdd"
                 },
                 "type": "Var"
@@ -169,7 +199,11 @@
               "type": "App",
               "abstraction": {
                 "value": {
-                  "moduleName": ["PSPS", "Design", "InitialPoC"],
+                  "moduleName": [
+                    "PSPS",
+                    "Design",
+                    "InitialPoC"
+                  ],
                   "identifier": "Semiring"
                 },
                 "type": "Var"
@@ -263,11 +297,19 @@
                 "binders": [
                   {
                     "constructorName": {
-                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "moduleName": [
+                        "PSPS",
+                        "Design",
+                        "InitialPoC"
+                      ],
                       "identifier": "Just"
                     },
                     "typeName": {
-                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "moduleName": [
+                        "PSPS",
+                        "Design",
+                        "InitialPoC"
+                      ],
                       "identifier": "Maybe"
                     },
                     "binders": [
@@ -280,11 +322,19 @@
                   },
                   {
                     "constructorName": {
-                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "moduleName": [
+                        "PSPS",
+                        "Design",
+                        "InitialPoC"
+                      ],
                       "identifier": "Just"
                     },
                     "typeName": {
-                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "moduleName": [
+                        "PSPS",
+                        "Design",
+                        "InitialPoC"
+                      ],
                       "identifier": "Maybe"
                     },
                     "binders": [
@@ -318,7 +368,11 @@
                       "abstraction": {
                         "argument": {
                           "value": {
-                            "moduleName": ["PSPS", "Design", "InitialPoC"],
+                            "moduleName": [
+                              "PSPS",
+                              "Design",
+                              "InitialPoC"
+                            ],
                             "identifier": "semiringInt"
                           },
                           "type": "Var"
@@ -326,7 +380,11 @@
                         "type": "App",
                         "abstraction": {
                           "value": {
-                            "moduleName": ["PSPS", "Design", "InitialPoC"],
+                            "moduleName": [
+                              "PSPS",
+                              "Design",
+                              "InitialPoC"
+                            ],
                             "identifier": "add"
                           },
                           "type": "Var"
@@ -337,7 +395,11 @@
                   "type": "App",
                   "abstraction": {
                     "value": {
-                      "moduleName": ["PSPS", "Design", "InitialPoC"],
+                      "moduleName": [
+                        "PSPS",
+                        "Design",
+                        "InitialPoC"
+                      ],
                       "identifier": "Just"
                     },
                     "type": "Var"
@@ -356,7 +418,11 @@
                 ],
                 "expression": {
                   "value": {
-                    "moduleName": ["PSPS", "Design", "InitialPoC"],
+                    "moduleName": [
+                      "PSPS",
+                      "Design",
+                      "InitialPoC"
+                    ],
                     "identifier": "Nothing"
                   },
                   "type": "Var"
@@ -388,7 +454,11 @@
           "type": "App",
           "abstraction": {
             "value": {
-              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "moduleName": [
+                "PSPS",
+                "Design",
+                "InitialPoC"
+              ],
               "identifier": "Just"
             },
             "type": "Var"
@@ -407,7 +477,11 @@
             "type": "App",
             "abstraction": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "Just"
               },
               "type": "Var"
@@ -416,7 +490,11 @@
           "type": "App",
           "abstraction": {
             "value": {
-              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "moduleName": [
+                "PSPS",
+                "Design",
+                "InitialPoC"
+              ],
               "identifier": "addMaybe"
             },
             "type": "Var"
@@ -430,7 +508,11 @@
       "expression": {
         "argument": {
           "value": {
-            "moduleName": ["PSPS", "Design", "InitialPoC"],
+            "moduleName": [
+              "PSPS",
+              "Design",
+              "InitialPoC"
+            ],
             "identifier": "Nothing"
           },
           "type": "Var"
@@ -448,7 +530,11 @@
             "type": "App",
             "abstraction": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "Just"
               },
               "type": "Var"
@@ -457,7 +543,11 @@
           "type": "App",
           "abstraction": {
             "value": {
-              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "moduleName": [
+                "PSPS",
+                "Design",
+                "InitialPoC"
+              ],
               "identifier": "addMaybe"
             },
             "type": "Var"
@@ -472,7 +562,11 @@
         "argument": {
           "argument": {
             "value": {
-              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "moduleName": [
+                "PSPS",
+                "Design",
+                "InitialPoC"
+              ],
               "identifier": "semiringInt"
             },
             "type": "Var"
@@ -480,7 +574,11 @@
           "type": "App",
           "abstraction": {
             "value": {
-              "moduleName": ["PSPS", "Design", "InitialPoC"],
+              "moduleName": [
+                "PSPS",
+                "Design",
+                "InitialPoC"
+              ],
               "identifier": "one"
             },
             "type": "Var"
@@ -491,7 +589,11 @@
           "argument": {
             "argument": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "semiringInt"
               },
               "type": "Var"
@@ -499,7 +601,11 @@
             "type": "App",
             "abstraction": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "one"
               },
               "type": "Var"
@@ -509,7 +615,11 @@
           "abstraction": {
             "argument": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "semiringInt"
               },
               "type": "Var"
@@ -517,7 +627,11 @@
             "type": "App",
             "abstraction": {
               "value": {
-                "moduleName": ["PSPS", "Design", "InitialPoC"],
+                "moduleName": [
+                  "PSPS",
+                  "Design",
+                  "InitialPoC"
+                ],
                 "identifier": "add"
               },
               "type": "Var"
@@ -529,5 +643,8 @@
     }
   ],
   "comments": [],
-  "foreign": ["intAdd", "intMul"]
+  "foreign": [
+    "intAdd",
+    "intMul"
+  ]
 }

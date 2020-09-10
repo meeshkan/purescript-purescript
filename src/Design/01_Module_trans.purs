@@ -7,8 +7,6 @@ foreign import kind PSPS_Design_Module_Bind
 
 foreign import kind PSPS_Design_Module_Expr
 
-foreign import kind PSPS_Design_Module_Result
-
 foreign import data PSPS_Design_Module :: ModuleName
 
 foreign import data PSPS_Design_Module_NonRec :: Symbol -> Expr -> PSPS_Design_Module_Bind
@@ -16,8 +14,6 @@ foreign import data PSPS_Design_Module_NonRec :: Symbol -> Expr -> PSPS_Design_M
 foreign import data PSPS_Design_Module_Constructor :: Symbol -> Symbol -> Nat -> PSPS_Design_Module_Expr
 
 class PSPS_Design_Module_Lift (expr' :: PSPS_Design_Module_Expr) (expr :: Expr) | expr' -> expr
-
-class PSPS_Design_Module_Expr (expr :: PSPS_Design_Module_Expr) (result :: PSPS_Design_Module_Result) | expr -> result
 
 class PSPS_Design_Module_Bind (path :: Symbol) (expr :: PSPS_Design_Module_Expr) | path -> expr
 

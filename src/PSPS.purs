@@ -4,8 +4,6 @@ import Type.Data.Peano (kind Nat)
 
 foreign import kind Expr
 
-foreign import kind Result
-
 foreign import kind ModuleName
 
 foreign import data Constructor :: Symbol -> Symbol -> Nat -> Expr
@@ -18,8 +16,7 @@ foreign import data Constructor :: Symbol -> Symbol -> Nat -> Expr
 -- the result will contain the same information as the application (not sure how to encode it)
 -- because there is no further reducing to do here.
 -- on the other hand, 1+1 (addition of two typelevel integers) should result in 2
--- we'll have to figure out what data have `kind Result`
-class Eval (expr :: Expr) (result :: Expr) | expr -> result
+class Eval (expr :: Expr) (evaledExp :: Expr)
 
 -- binds and modulename (ie Foo.Bar) and a name (ie Baz) to an expression
 -- this is then used by `Var` during the lookup phase
