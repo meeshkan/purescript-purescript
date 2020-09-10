@@ -19,7 +19,7 @@ foreign import data Abs :: Expr -> Expr -> Expr -> Expr
 -- the result will contain the same information as the application (not sure how to encode it)
 -- because there is no further reducing to do here.
 -- on the other hand, 1+1 (addition of two typelevel integers) should result in 2
-class Eval (expr :: Expr) (evaledExp :: Expr) | expr -> evaledExpr
+class Eval (expr :: Expr) (evaledExpr :: Expr) | expr -> evaledExpr
 
 -- binds and modulename (ie Foo.Bar) and a name (ie Baz) to an expression
 -- this is then used by `Var` during the lookup phase
