@@ -1,16 +1,31 @@
 {
-  "moduleName": ["PSPS", "Design", "Function"],
+  "moduleName": [
+    "PSPS",
+    "Design",
+    "Function"
+  ],
   "imports": [
     {
-      "moduleName": ["PSPS", "Design", "Function"]
+      "moduleName": [
+        "PSPS",
+        "Design",
+        "Function"
+      ]
     },
     {
-      "moduleName": ["Prim"]
+      "moduleName": [
+        "Prim"
+      ]
     }
   ],
   "builtWith": "0.13.8",
   "modulePath": "src/Design/02_Function.purs",
-  "exports": ["Pass", "Word", "NotSecure", "pw"],
+  "exports": [
+    "Pass",
+    "Word",
+    "NotSecure",
+    "pw"
+  ],
   "decls": [
     {
       "identifier": "Word",
@@ -48,7 +63,11 @@
         "body": {
           "body": {
             "value": {
-              "moduleName": ["PSPS", "Design", "Function"],
+              "moduleName": [
+                "PSPS",
+                "Design",
+                "Function"
+              ],
               "identifier": "NotSecure"
             },
             "type": "Var"

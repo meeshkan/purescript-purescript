@@ -1,13 +1,22 @@
 {
-  "moduleName": ["PSPS", "Design", "Module"],
+  "moduleName": [
+    "PSPS",
+    "Design",
+    "Module"
+  ],
   "imports": [
     {
-      "moduleName": ["Prim"]
+      "moduleName": [
+        "Prim"
+      ]
     }
   ],
   "builtWith": "0.13.8",
   "modulePath": "src/Design/01_Module.purs",
-  "exports": ["Hello", "World"],
+  "exports": [
+    "Hello",
+    "World"
+  ],
   "decls": [
     {
       "identifier": "Hello",
