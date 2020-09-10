@@ -1,8 +1,12 @@
 module PSPS.Design.InitialPoC.Trans where
 
-import PSPS (kind Expr, class Eval)
+import PSPS (class Bind, class Eval, kind Expr, kind ModuleName)
+
+foreign import data PSPS_Design_InitialPoC_Trans :: ModuleName
 
 class PSPS_Design_InitialPoC_Trans_Eval (expr :: Expr) (result :: Expr) | expr -> result
+
+class PSPS_Design_InitialPoC_Trans_Bind (path :: Symbol) (expr :: Expr) | path -> expr
 
 foreign import kind Maybe
 
@@ -13,6 +17,14 @@ foreign import data Nothing :: Maybe
 foreign import data Maybe0 :: Maybe -> Expr
 
 foreign import data Maybe1 :: (Expr -> Maybe) -> Expr
+
+instance iPSPS_Design_InitialPoC_Trans_Bind'Just :: PSPS_Design_InitialPoC_Trans_Bind "Just" (Maybe1 Just)
+
+instance iPSPS_Design_InitialPoC_Trans_Bind'Nothing :: PSPS_Design_InitialPoC_Trans_Bind "Nothing" (Maybe0 Nothing)
+
+instance iBind'Just :: PSPS_Design_InitialPoC_Trans_Bind "Just" o => Bind PSPS_Design_InitialPoC_Trans "Just" o
+
+instance iBind'Nothing :: PSPS_Design_InitialPoC_Trans_Bind "Nothing" o => Bind PSPS_Design_InitialPoC_Trans "Nothing" o
 
 instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Maybe0 ::
   Eval v0 v0' =>
@@ -68,3 +80,7 @@ instance iEval'Tuple'Tuple1 ::
 instance iEval'Tuple'Tuple2 ::
   PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) o =>
   Eval (Tuple2 Tuple) o
+
+instance iPSPS_Design_InitialPoC_Trans_Bind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" (Tuple2 Tuple)
+
+instance iBind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" o => Bind PSPS_Design_InitialPoC_Trans "Tuple" o

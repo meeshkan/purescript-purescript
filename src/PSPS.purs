@@ -4,11 +4,12 @@ import Type.Data.Peano (kind Nat)
 
 foreign import kind Expr
 
-foreign import kind Result
-
 foreign import kind ModuleName
 
 foreign import data Constructor :: Symbol -> Symbol -> Nat -> Expr
+
+------------------------- a -> b   a       b
+foreign import data Abs :: Expr -> Expr -> Expr -> Expr
 
 -- evaluates an expression to a result
 -- sometimes, in the case of data, the result will mirror the expression
