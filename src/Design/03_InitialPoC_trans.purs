@@ -1,12 +1,79 @@
 module PSPS.Design.InitialPoC.Trans where
 
-import PSPS (class Bind, class Eval, App, kind Expr, kind ModuleName)
+import PSPS (class Bind, class Eval, Abs, Literal, Prim'Int, App, Foreign, kind Expr, kind FFIName, kind ModuleName)
+import Type.Data.Peano (class SumInt, Succ, Z)
 
 foreign import data PSPS_Design_InitialPoC_Trans :: ModuleName
 
 class PSPS_Design_InitialPoC_Trans_Eval (expr :: Expr) (result :: Expr) | expr -> result
 
 class PSPS_Design_InitialPoC_Trans_Bind (path :: Symbol) (expr :: Expr) | path -> expr
+
+foreign import data Foreign'intAdd :: FFIName
+
+instance iPSPS_Design_InitialPoC_Trans_Bind'intAdd :: PSPS_Design_InitialPoC_Trans_Bind "intAdd" (Abs "intAdd" (Succ Z) (Abs "intAdd" Z (Foreign Foreign'intAdd)))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'intAdd'intAdd1'App ::
+  PSPS_Design_InitialPoC_Trans_Eval a a' =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (Abs "intAdd" (Succ Z) (Abs "intAdd" Z (Foreign Foreign'intAdd))) a) (Abs "intAdd" Z (App (Foreign Foreign'intAdd) a'))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'intAdd'intAdd0'App ::
+  ( PSPS_Design_InitialPoC_Trans_Eval a a'
+  , PSPS_Design_InitialPoC_Trans_Eval b b'
+  ) =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (Abs "intAdd" Z (App (Foreign Foreign'intAdd) a)) b) (App (App (Foreign Foreign'intAdd) a') b')
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'intAdd'intAddE'App ::
+  ( PSPS_Design_InitialPoC_Trans_Eval a (Literal (Prim'Int a'))
+  , PSPS_Design_InitialPoC_Trans_Eval b (Literal (Prim'Int b'))
+  , SumInt a' b' c
+  ) =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (App (Foreign Foreign'intAdd) a) b) (Literal (Prim'Int c))
+
+foreign import kind Tuple
+
+foreign import data Tuple :: Expr -> Expr -> Tuple
+
+foreign import data Tuple0 :: Tuple -> Expr
+
+foreign import data Tuple1 :: (Expr -> Tuple) -> Expr
+
+foreign import data Tuple2 :: (Expr -> Expr -> Tuple) -> Expr
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple0 ::
+  (PSPS_Design_InitialPoC_Trans_Eval v0 v0', PSPS_Design_InitialPoC_Trans_Eval v1 v1') =>
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple0 (Tuple v0 v1)) (Tuple0 (Tuple v0' v1'))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple1 ::
+  (PSPS_Design_InitialPoC_Trans_Eval v0 v0') =>
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple1 (Tuple v0)) (Tuple1 (Tuple v0'))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple2 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) (Tuple2 Tuple)
+
+instance iEval'Tuple'Tuple0 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple0 (Tuple v0 v1)) o =>
+  Eval (Tuple0 (Tuple v0 v1)) o
+
+instance iEval'Tuple'Tuple1 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple1 (Tuple v0)) o =>
+  Eval (Tuple1 (Tuple v0)) o
+
+instance iEval'Tuple'Tuple2 ::
+  PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) o =>
+  Eval (Tuple2 Tuple) o
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple2'App ::
+  PSPS_Design_InitialPoC_Trans_Eval a a' =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (Tuple2 Tuple) a) (Tuple1 (Tuple a'))
+
+instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple1'App ::
+  (PSPS_Design_InitialPoC_Trans_Eval a a', PSPS_Design_InitialPoC_Trans_Eval b b') =>
+  PSPS_Design_InitialPoC_Trans_Eval (App (Tuple1 (Tuple a)) b) (Tuple0 (Tuple a' b'))
+
+instance iPSPS_Design_InitialPoC_Trans_Bind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" (Tuple2 Tuple)
+
+instance iBind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" o => Bind PSPS_Design_InitialPoC_Trans "Tuple" o
 
 foreign import kind Maybe
 
@@ -51,48 +118,3 @@ instance iEval'Nothing'Maybe0 ::
 instance iEval'Just'Maybe1 ::
   PSPS_Design_InitialPoC_Trans_Eval (Maybe1 Just) o =>
   Eval (Maybe1 Just) o
-
-foreign import kind Tuple
-
-foreign import data Tuple :: Expr -> Expr -> Tuple
-
-foreign import data Tuple0 :: Tuple -> Expr
-
-foreign import data Tuple1 :: (Expr -> Tuple) -> Expr
-
-foreign import data Tuple2 :: (Expr -> Expr -> Tuple) -> Expr
-
-instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple0 ::
-  (PSPS_Design_InitialPoC_Trans_Eval v0 v0', PSPS_Design_InitialPoC_Trans_Eval v1 v1') =>
-  PSPS_Design_InitialPoC_Trans_Eval (Tuple0 (Tuple v0 v1)) (Tuple0 (Tuple v0' v1'))
-
-instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple1 ::
-  (PSPS_Design_InitialPoC_Trans_Eval v0 v0') =>
-  PSPS_Design_InitialPoC_Trans_Eval (Tuple1 (Tuple v0)) (Tuple1 (Tuple v0'))
-
-instance iPSPS_Design_InitialPoC_Trans_Eval'Tuple'Tuple2 ::
-  PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) (Tuple2 Tuple)
-
-instance iEval'Tuple'Tuple0 ::
-  PSPS_Design_InitialPoC_Trans_Eval (Tuple0 (Tuple v0 v1)) o =>
-  Eval (Tuple0 (Tuple v0 v1)) o
-
-instance iEval'Tuple'Tuple1 ::
-  PSPS_Design_InitialPoC_Trans_Eval (Tuple1 (Tuple v0)) o =>
-  Eval (Tuple1 (Tuple v0)) o
-
-instance iEval'Tuple'Tuple2 ::
-  PSPS_Design_InitialPoC_Trans_Eval (Tuple2 Tuple) o =>
-  Eval (Tuple2 Tuple) o
-
-instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Tuple2'App ::
-  PSPS_Design_InitialPoC_Trans_Eval a a' =>
-  PSPS_Design_InitialPoC_Trans_Eval (App (Tuple2 Tuple) a) (Tuple1 (Tuple a'))
-
-instance iPSPS_Design_InitialPoC_Trans_Eval'Just'Tuple1'App ::
-  (PSPS_Design_InitialPoC_Trans_Eval a a', PSPS_Design_InitialPoC_Trans_Eval b b') =>
-  PSPS_Design_InitialPoC_Trans_Eval (App (Tuple1 (Tuple a)) b) (Tuple0 (Tuple a' b'))
-
-instance iPSPS_Design_InitialPoC_Trans_Bind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" (Tuple2 Tuple)
-
-instance iBind'Tuple :: PSPS_Design_InitialPoC_Trans_Bind "Tuple" o => Bind PSPS_Design_InitialPoC_Trans "Tuple" o

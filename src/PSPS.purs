@@ -1,15 +1,28 @@
 module PSPS where
 
-import Type.Data.Peano (kind Nat)
+import Type.Data.Peano (kind Int, kind Nat)
 
 foreign import kind Expr
 
 foreign import kind ModuleName
 
+foreign import kind FFIName
+
+foreign import kind Literal
+
 foreign import data Constructor :: Symbol -> Symbol -> Nat -> Expr
+
+-------------------------   fn       curry   var
+foreign import data Abs :: Symbol -> Nat -> Expr -> Expr
+
+foreign import data Foreign :: FFIName -> Expr
 
 ------------------------- a -> b   a       
 foreign import data App :: Expr -> Expr -> Expr
+
+foreign import data Literal :: Literal -> Expr
+
+foreign import data Prim'Int :: Int -> Literal
 
 -- evaluates an expression to a result
 -- sometimes, in the case of data, the result will mirror the expression
